@@ -17,3 +17,8 @@ Route::get('survey/{id}', 'SurveyCntroler@show');
 Route::post('survey', 'SurveyCntroler@store');
 Route::put('survey/{id}', 'SurveyCntroler@update');
 Route::delete('survey/{id}', 'SurveyCntroler@delete');
+
+Route::get('device', 'DeviceController@index');
+Route::get('device/{id}', 'DeviceController@show_survey');
+Route::post('device', 'DeviceController@index');
+Route::delete('device/{id}', 'DeviceController@delete');

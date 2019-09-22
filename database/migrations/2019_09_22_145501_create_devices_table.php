@@ -14,7 +14,7 @@ class CreateDevicesTable extends Migration
     public function up()
     {
         Schema::create('devices', function (Blueprint $table) {
-            $table->string('id')->unique();
+            $table->string('key')->primary();
             $table->enum('state', ['active', 'inactive']);
             $table->timestamps();
         });
