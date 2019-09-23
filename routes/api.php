@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 Route::get('survey', 'SurveyCntroler@index');
+Route::get('survey/start', 'SurveyCntroler@two_h');
 Route::get('survey/{id}', 'SurveyCntroler@show');
 Route::post('survey', 'SurveyCntroler@store');
 Route::put('survey/{id}', 'SurveyCntroler@update');
@@ -20,5 +21,5 @@ Route::delete('survey/{id}', 'SurveyCntroler@delete');
 
 Route::get('device', 'DeviceController@index');
 Route::get('device/{id}', 'DeviceController@show_survey');
-Route::post('device', 'DeviceController@index');
+Route::post('device', 'DeviceController@store');
 Route::delete('device/{id}', 'DeviceController@delete');

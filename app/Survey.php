@@ -11,7 +11,7 @@ class Survey extends Model
         'pm25',
         'pm10',
         'location',
-        'device_key',
+        'device_id',
         'temperature',
         'pressure',
         'humidity',
