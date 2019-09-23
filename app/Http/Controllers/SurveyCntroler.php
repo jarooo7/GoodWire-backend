@@ -22,6 +22,10 @@ class SurveyCntroler extends Controller
         return Survey::whereBetween('created_at', [$from, $current_date_time])->get();
     }
 
+    public function show_betweenh($date_time1, $date_time2){
+        return Survey::whereBetween('created_at', [$date_time1, $date_time2])->get();
+    }
+
     public function store(Request $request){
         return Survey::create($request->all());
     }

@@ -13,7 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 Route::get('survey', 'SurveyCntroler@index');
-Route::get('survey/start', 'SurveyCntroler@two_h');
+Route::get('surveybetweenh', 'SurveyCntroler@two_h');
+Route::get('surveybetweenh/{data_time1}/{data_time2}', 'SurveyCntroler@show_betweenh');
 Route::get('survey/{id}', 'SurveyCntroler@show');
 Route::post('survey', 'SurveyCntroler@store');
 Route::put('survey/{id}', 'SurveyCntroler@update');
