@@ -23,4 +23,10 @@ Route::delete('survey/{id}', 'SurveyCntroler@delete');
 Route::get('device', 'DeviceController@index');
 Route::get('device/{id}', 'DeviceController@show_survey');
 Route::post('device', 'DeviceController@store');
+Route::put('device/{id}', 'DeviceControlle@update');
 Route::delete('device/{id}', 'DeviceController@delete');
+
+Route::get('key', 'ControllerBaseKey@index');
+Route::put('key/{id}', 'ControllerBaseKey@update');
+Route::post('key', 'ControllerBaseKey@store');
+Route::delete('key/{id}', 'ControllerBaseKey@delete');

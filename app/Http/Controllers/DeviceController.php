@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Device;
-
+use App\Pin;
+use Exception;
 
 class DeviceController extends Controller
 {
@@ -22,13 +23,12 @@ class DeviceController extends Controller
     public function store(Request $request){
         $pin = $request->input('pin');
         $key = $request->input('key');
+        $base_key = Pin::all();
         $p[0] =(int)($pin/1000); 
         $p[1] =(int)($pin/100)  - $p[0] * 10; 
         $p[2] =(int)($pin/10)  - $p[0] * 100 - $p[1] * 10; 
         $p[3] =$pin - $p[0] * 1000 - $p[1] * 100 - $p[2] *10;
-        
         $ktab = str_split(strtoupper($key));
-
         for($k=0;$k<4;$k++)
         {
             for($i=0;$i<4;$i++)
@@ -42,15 +42,20 @@ class DeviceController extends Controller
             }
         }
         $keygen =implode($ktab);
-        if ($keygen=="S2GO-3D74-A6B3-S53X")
+        foreach($base_key as $value)
         {
-            $request->merge( ['key'=>$key."-".$pin]);
-            return Device::create($request->all());
-        }
-        else{
-            return 501;
-        }
-        
+            if ($keygen==$value['base_key'])
+            {
+                $request->merge( ['key'=>$key."-".$pin]);
+                try{
+                    return Device::create($request->all());
+                }
+                catch(Exception $e){
+                    return 502;
+                }
+            }
+        }    
+        return 501; 
     }
 
     public function delete(Request $request, $key){
