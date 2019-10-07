@@ -9,6 +9,10 @@ class Device extends Model
 {
     protected $primaryKey = 'key';
     public $incrementing = false;
+    protected $fillable = [
+        'key',
+        'state'
+    ];
 
     public function surveys()
     {
