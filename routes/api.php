@@ -12,6 +12,13 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::post('login', 'APILoginController@login');
+Route::post('logout', 'APILoginController@logout');
+Route::middleware('jwt.auth')->get('users', function () {
+    return auth('api')->user();
+});
+
 Route::get('survey', 'SurveyCntroler@index');
 Route::get('surveybetweenh', 'SurveyCntroler@two_h');
 Route::get('surveybetweenh/{data_time1}/{data_time2}', 'SurveyCntroler@show_betweenh');
