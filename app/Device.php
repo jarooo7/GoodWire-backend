@@ -11,7 +11,8 @@ class Device extends Model
     public $incrementing = false;
     protected $fillable = [
         'key',
-        'state'
+        'state',
+        'tel'
     ];
 
     public function surveys()
@@ -19,3 +20,4 @@ class Device extends Model
         return $this->hasMany(Survey::class, 'device_id');
     }
 }
+	
