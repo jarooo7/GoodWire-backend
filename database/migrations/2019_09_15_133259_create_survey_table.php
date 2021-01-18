@@ -24,7 +24,11 @@ class CreateSurveyTable extends Migration
             $table->double('temperature', 15, 4);
             $table->double('pressure', 15, 4);
             $table->double('humidity', 15, 4);
-
+            $table->double('VO', 15, 4);
+            $table->double('HS', 15, 4);
+            $table->double('NH', 15, 4);
+            $table->double('CO', 15, 4);
+            $table->double('NO', 15, 4);
         });
     }
 
