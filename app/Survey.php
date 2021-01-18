@@ -15,5 +15,12 @@ class Survey extends Model
         'temperature',
         'pressure',
         'humidity',
+        'HS',
+        'CO',
+        'NH',
+        'NO',
+        'VO'
+        
     ];
 }
+					

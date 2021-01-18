@@ -23,6 +23,7 @@ class DeviceController extends Controller
     public function store(Request $request){
         $pin = $request->input('pin');
         $key = $request->input('key');
+        $tel = $request->input('tel');
         $base_key = Pin::all();
         $p[0] =(int)($pin/1000); 
         $p[1] =(int)($pin/100)  - $p[0] * 10; 
@@ -46,7 +47,7 @@ class DeviceController extends Controller
         {
             if ($keygen==$value['base_key'])
             {
-                $request->merge( ['key'=>$key."-".$pin]);
+                $request->merge( ['key'=>$key."-".$pin,'tel'=>$tel,'state'=>"active"]);
                 try{
                     return Device::create($request->all());
                 }
@@ -64,4 +65,10 @@ class DeviceController extends Controller
         $device->delete();
         return 204;
     }
+ public function update(Request $request, $key){
+        $device =Device::findOrFail($key);
+        $device ->update($request->all());
+        return $device ;
+    }
 }
+	

@@ -14,7 +14,8 @@ use Illuminate\Http\Request;
 */
 
 Route::post('login', 'APILoginController@login');
-Route::post('logout', 'APILoginController@logout');
+Route::get('logout', 'APILoginController@logout');
+Route::post('me', 'APILoginController@me');
 Route::middleware('jwt.auth')->get('users', function () {
     return auth('api')->user();
 });
@@ -22,16 +23,18 @@ Route::middleware('jwt.auth')->get('users', function () {
 Route::get('survey', 'SurveyCntroler@index');
 Route::get('surveybetweenh', 'SurveyCntroler@two_h');
 Route::get('surveybetweenh/{data_time1}/{data_time2}', 'SurveyCntroler@show_betweenh');
+Route::get('loc/{data_time1}/{data_time2}/{standLat}/{standLng}/{km}', 'SurveyCntroler@show_loc');
 Route::get('survey/{id}', 'SurveyCntroler@show');
+Route::post('surveyd', 'SurveyCntroler@stored');
 Route::post('survey', 'SurveyCntroler@store');
 Route::put('survey/{id}', 'SurveyCntroler@update');
 Route::delete('survey/{id}', 'SurveyCntroler@delete');
 
 Route::get('device', 'DeviceController@index');
-Route::get('device/{id}', 'DeviceController@show_survey');
+Route::get('device/{key}', 'DeviceController@show_survey');
 Route::post('device', 'DeviceController@store');
-Route::put('device/{id}', 'DeviceControlle@update');
-Route::delete('device/{id}', 'DeviceController@delete');
+Route::put('device/{key}', 'DeviceController@update');
+Route::delete('device/{key}', 'DeviceController@delete');
 
 Route::get('key', 'ControllerBaseKey@index');
 Route::put('key/{id}', 'ControllerBaseKey@update');
